@@ -1,9 +1,0 @@
-Flask==2.2.3
-yfinance==0.2.24
-numpy==1.24.2
-pandas==2.0.0
-scikit-learn==1.2.2
-tensorflow==2.13.0
-matplotlib==3.7.1
-sqlalchemy 
-psycopg2-binary
