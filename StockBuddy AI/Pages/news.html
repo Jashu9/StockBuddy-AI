@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time News Feed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <nav class="bg-gray-800 p-4 text-white text-lg font-bold text-center shadow-lg">Real-time Financial News</nav>
+    
+    <div class="p-6 max-w-4xl mx-auto">
+        <h2 class="text-xl font-semibold mb-4">Filter News</h2>
+        <input type="text" id="keyword" placeholder="Enter keyword or company" class="p-2 rounded bg-gray-700 text-white w-full mb-4">
+        <button onclick="fetchNews()" class="bg-blue-500 p-2 rounded w-full">Search</button>
+        
+        <h2 class="text-xl font-semibold mt-6">Latest News</h2>
+        <div id="newsFeed" class="mt-4 space-y-4"></div>
+    </div>
+    
+    <script>
+        async function fetchNews() {
+            const keyword = document.getElementById('keyword').value;
+            const newsFeed = document.getElementById('newsFeed');
+            newsFeed.innerHTML = "<p class='text-gray-400'>Fetching latest news...</p>";
+            
+            // Simulated fetch (Replace with actual API call)
+            setTimeout(() => {
+                newsFeed.innerHTML = `
+                    <div class='bg-gray-800 p-4 rounded-lg shadow-lg'>
+                        <h3 class='text-lg font-semibold'>Market Rally Continues</h3>
+                        <p class='text-gray-400 text-sm'>Stocks surge as investors react to positive earnings reports.</p>
+                        <a href='#' class='text-blue-400'>Read more</a>
+                    </div>
+                    <div class='bg-gray-800 p-4 rounded-lg shadow-lg'>
+                        <h3 class='text-lg font-semibold'>Tech Sector Faces Challenges</h3>
+                        <p class='text-gray-400 text-sm'>Regulatory concerns put pressure on major tech firms.</p>
+                        <a href='#' class='text-blue-400'>Read more</a>
+                    </div>
+                `;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

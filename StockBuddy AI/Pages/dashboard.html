@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <nav class="bg-gray-800 p-4 text-white text-lg font-bold text-center shadow-lg">Stock Market Dashboard</nav>
+    
+    <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-gray-800 p-6 shadow-lg rounded-lg">
+            <h2 class="text-xl font-semibold mb-4">Market Trends</h2>
+            <canvas id="marketChart"></canvas>
+        </div>
+        
+        <div class="bg-gray-800 p-6 shadow-lg rounded-lg">
+            <h2 class="text-xl font-semibold mb-4">News Highlights</h2>
+            <ul class="text-sm space-y-3">
+                <li>📈 <span class="text-green-400">Stock X surges 5% after earnings report</span></li>
+                <li>📉 <span class="text-red-400">Market dips amid economic uncertainty</span></li>
+                <li>💡 <span class="text-blue-400">Experts predict growth in tech stocks</span></li>
+            </ul>
+        </div>
+        
+        <div class="bg-gray-800 p-6 shadow-lg rounded-lg">
+            <h2 class="text-xl font-semibold mb-4">Sentiment Analysis</h2>
+            <p class="text-gray-300">Overall Market Sentiment: <span class="text-green-400 font-bold">Bullish</span></p>
+            <p class="text-gray-300">Tech Sector Sentiment: <span class="text-red-400 font-bold">Bearish</span></p>
+        </div>
+    </div>
+    
+    <script>
+        const ctx = document.getElementById('marketChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                datasets: [{
+                    label: 'Stock Index',
+                    data: [3000, 3050, 2900, 2950, 3100],
+                    borderColor: 'cyan',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    x: { ticks: { color: 'white' } },
+                    y: { ticks: { color: 'white' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

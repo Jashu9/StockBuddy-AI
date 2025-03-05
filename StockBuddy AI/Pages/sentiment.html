@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Sentiment Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <nav class="bg-gray-800 p-4 text-white text-lg font-bold text-center shadow-lg">Market Sentiment Analysis</nav>
+    
+    <div class="p-6 max-w-4xl mx-auto">
+        <h2 class="text-xl font-semibold mb-4">Sentiment Overview</h2>
+        <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="bg-green-500 p-4 rounded-lg shadow-lg text-center">
+                <h3 class="text-lg font-semibold">Bullish</h3>
+                <p class="text-2xl">65%</p>
+            </div>
+            <div class="bg-red-500 p-4 rounded-lg shadow-lg text-center">
+                <h3 class="text-lg font-semibold">Bearish</h3>
+                <p class="text-2xl">25%</p>
+            </div>
+            <div class="bg-yellow-500 p-4 rounded-lg shadow-lg text-center">
+                <h3 class="text-lg font-semibold">Neutral</h3>
+                <p class="text-2xl">10%</p>
+            </div>
+        </div>
+
+        <div class="chart-container mb-6">
+            <h2 class="text-xl font-semibold">Sentiment Trend Over Time</h2>
+            <canvas id="sentimentChart" width="400" height="200"></canvas>
+            <!-- You can use Chart.js or similar libraries to render the chart -->
+        </div>
+
+        <div class="user-input mb-6">
+            <h2 class="text-xl font-semibold">Get Insights</h2>
+            <input type="text" id="userInput" placeholder="Enter a stock symbol or topic..." class="p-2 rounded bg-gray-700 text-white w-full mb-4">
+            <button onclick="analyzeSentiment()" class="bg-blue-500 p-2 rounded w-full">Analyze Sentiment</button>
+        </div>
+
+        <div id="analysisResult" class="mt-4"></div>
+    </div>
+
+    <script>
+        function analyzeSentiment() {
+            const userInput = document.getElementById('userInput').value;
+            const analysisResult = document.getElementById('analysisResult');
+            analysisResult.innerHTML = "<p class='text-gray-400'>Analyzing sentiment for: " + userInput + "...</p>";
+
+            // Simulated analysis (Replace with actual sentiment analysis logic)
+            setTimeout(() => {
+                const sentiment = Math.random();
+                let sentimentText;
+                if (sentiment > 0.65) {
+                    sentimentText = "Bullish sentiment detected!";
+                } else if (sentiment < 0.25) {
+                    sentimentText = "Bearish sentiment detected!";
+                } else {
+                    sentimentText = "Neutral sentiment detected!";
+                }
+                analysisResult.innerHTML = `<p class='text-green-400'>${sentimentText}</p>`;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
