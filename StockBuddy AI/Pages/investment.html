@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Recommendations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <nav class="bg-gray-800 p-4 text-white text-lg font-bold text-center shadow-lg">Investment Recommendations</nav>
+    
+    <div class="p-6 max-w-4xl mx-auto">
+        <h2 class="text-xl font-semibold mb-4">Your Investment Profile</h2>
+        <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-6">
+            <p class="text-sm">Risk Profile: <span id="riskProfile" class="font-bold">Moderate</span></p>
+            <p class="text-sm">Current Portfolio Value: <span id="portfolioValue" class="font-bold">$50,000</span></p>
+        </div>
+
+        <h2 class="text-xl font-semibold mb-4">Set Your Risk Preference</h2>
+        <select id="riskPreference" class="p-2 rounded bg-gray-700 text-white w-full mb-4">
+            <option value="low">Low Risk</option>
+            <option value="moderate" selected>Moderate Risk</option>
+            <option value="high">High Risk</option>
+        </select>
+
+        <button onclick="getRecommendations()" class="bg-blue-500 p-2 rounded w-full">Get Recommendations</button>
+
+        <h2 class="text-xl font-semibold mt-6">Recommended Investments</h2>
+        <div id="recommendations" class="mt-4 space-y-4"></div>
+    </div>
+
+    <script>
+        function getRecommendations() {
+            const riskPreference = document.getElementById('riskPreference').value;
+            const recommendations = document.getElementById('recommendations');
+            recommendations.innerHTML = "<p class='text-gray-400'>Fetching recommendations...</p>";
+
+            // Simulated fetch (Replace with actual recommendation logic)
+            setTimeout(() => {
+                let recommendationList;
+                if (riskPreference === 'low') {
+                    recommendationList = `
+                        <div class='bg-gray-800 p-4 rounded-lg shadow-lg'>
+                            <h3 class='text-lg font-semibold'>Bond Fund A</h3>
+                            <p class='text-gray-400 text-sm'>Stable returns with minimal risk.</p>
+                        </div>
+                        <div class='bg-gray-800 p-4 rounded-lg shadow-lg'>
+                            <h3 class='text-lg font-semibold'>Dividend Stock B</h3>
+                            <p class='text-gray-400 text-sm'>Reliable dividends with good growth potential.</p>
+                        </div>
+                    `;
+                } else if (riskPreference === 'moderate') {
+                    recommendationList = `
+                        <div class='bg-gray-800 p-4 rounded-lg shadow-lg'>
+                            <h3 class='text-lg font-semibold'>Index Fund C</h3>
+                            <p class='text-gray-400 text-sm'>Diversified exposure to the market.</p>
+                        </div>
+                        <div class='bg-gray-800 p-4 rounded-lg shadow-lg'>
+                            <h3 class='text-lg font-semibold'>Tech Stock D</h3>
+                            <p class='text-gray-400 text-sm'>Growth potential with moderate volatility.</p>
+                        </div>
+                    `;
+                } else {
+                    recommendationList = `
+                        <div class='bg-gray-800 p-4 rounded-lg shadow-lg'>
+                            <h3 class='text-lg font-semibold'>Cryptocurrency E</h3>
+                            <p class='text-gray-400 text-sm'>High-risk, high-reward investment.</p>
+                        </div>
+                        <div class='bg-gray-800 p-4 rounded-lg shadow-lg'>
+                            <h3 class='text-lg font-semibold'>Emerging Market Fund F</h3>
+                            <p class='text-gray-400 text-sm'>Potential for high returns with increased risk.</p>
+                        </div>
+                    `;
+                }
+                recommendations.innerHTML = recommendationList;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

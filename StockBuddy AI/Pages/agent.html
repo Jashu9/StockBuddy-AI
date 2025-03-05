@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Agent (AI Chat Assistant)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <nav class="bg-gray-800 p-4 text-white text-lg font-bold text-center shadow-lg">Finance Agent (AI Chat Assistant)</nav>
+    
+    <div class="p-6 max-w-4xl mx-auto">
+        <h2 class="text-xl font-semibold mb-4">Ask Your Financial Questions</h2>
+        <div id="chatContainer" class="bg-gray-800 p-4 rounded-lg h-80 overflow-y-auto mb-4">
+            <div id="chatMessages" class="space-y-4"></div>
+        </div>
+
+        <input type="text" id="userInput" placeholder="Type your message here..." class="p-2 rounded bg-gray-700 text-white w-full mb-4">
+        <button onclick="sendMessage()" class="bg-blue-500 p-2 rounded w-full">Send</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const chatMessages = document.getElementById('chatMessages');
+            const userMessage = userInput.value;
+
+            if (userMessage.trim() === "") return;
+
+            // Display user's message
+            chatMessages.innerHTML += `
+                <div class='text-right'>
+                    <span class='bg-blue-600 p-2 rounded-lg inline-block text-white'>${userMessage}</span>
+                </div>
+            `;
+            userInput.value = "";
+
+            // Simulated AI response (Replace with actual AI chat logic)
+            setTimeout(() => {
+                let aiResponse = "I'm sorry, but I couldn't find the information you need.";
+                const message = userMessage.toLowerCase();
+
+                if (message.includes("market condition")) {
+                    aiResponse = "The current market is experiencing a phase of high volatility due to a combination of recent economic indicators and geopolitical events. Analysts are observing fluctuating investor sentiment, largely influenced by inflation data and interest rate decisions from the Federal Reserve. As of now, many sectors are showing mixed performances, with technology stocks experiencing some pullbacks while energy stocks are gaining traction. It's essential to stay informed about upcoming economic reports and earnings announcements, as these can significantly impact market movements in the near term.";
+                } else if (message.includes("stock price of")) {
+                    aiResponse = "As of the latest trading session, the stock price of Apple Inc. (AAPL) is approximately $150.25. The company has shown a steady increase in its stock value over the past year, driven by strong quarterly earnings reports and continued demand for its products. Analysts remain optimistic about Apple's growth prospects, particularly in the services sector, which includes Apple Music, iCloud, and the App Store. If you’re considering investing, it's important to review Apple's fundamentals, market position, and future growth strategies.";
+                } else if (message.includes("recommendation")) {
+                    aiResponse = "Based on your investment profile, I would recommend a diversified approach to your portfolio. Consider including a mix of index funds, which provide broad market exposure with lower risk, and select growth stocks that have shown strong performance potential. For instance, investing in a S&P 500 index fund can be a stable foundation, while adding shares from innovative companies in technology or renewable energy can enhance your growth prospects. Additionally, don't overlook the benefits of bonds or fixed-income investments for risk mitigation, especially in volatile market conditions. Always assess your risk tolerance and investment horizon before making decisions.";
+                } else if (message.includes("tesla performance")) {
+                    aiResponse = "Tesla Inc. (TSLA) has been a focal point in the automotive and tech sectors, with its stock exhibiting significant fluctuations over the past year. Currently, Tesla's shares are trading around $750. The company has reported impressive growth in vehicle deliveries and is expanding its production capacity with new factories. However, investors should remain cautious as competition in the electric vehicle market increases, and external factors like supply chain issues and regulatory challenges may impact future performance. It is advisable to keep an eye on quarterly earnings reports and market trends that could influence Tesla's stock trajectory.";
+                } else if (message.includes("financial planning")) {
+                    aiResponse = "Effective financial planning involves a comprehensive assessment of your current financial situation, setting clear short-term and long-term goals, and developing a strategic plan to achieve those objectives. Start by analyzing your income, expenses, debts, and assets. It's crucial to establish an emergency fund to cover unexpected expenses. Next, consider your retirement plans and investment strategies, ensuring a balanced approach that aligns with your risk tolerance. Additionally, regular review of your financial plan is essential, especially as life circumstances and market conditions change. Seeking advice from financial professionals can also provide valuable insights tailored to your individual needs.";
+                }
+
+                // Display AI's response
+                chatMessages.innerHTML += `
+                    <div class='text-left'>
+                        <span class='bg-gray-700 p-2 rounded-lg inline-block text-white'>${aiResponse}</span>
+                    </div>
+                `;
+                // Scroll to the bottom of the chat
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1700);
+        }
+    </script>
+</body>
+</html>

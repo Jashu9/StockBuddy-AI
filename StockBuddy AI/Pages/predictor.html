@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Predictor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <nav class="bg-gray-800 p-4 text-white text-lg font-bold text-center shadow-lg">Stock Price Predictor</nav>
+    
+    <div class="p-6 max-w-4xl mx-auto">
+        <h2 class="text-xl font-semibold mb-4">Enter Stock Symbol</h2>
+        <input type="text" id="stockSymbol" placeholder="Enter stock symbol" class="p-2 rounded bg-gray-700 text-white w-full mb-4">
+        <button onclick="predictStockPrice()" class="bg-blue-500 p-2 rounded w-full">Predict</button>
+        
+        <h2 class="text-xl font-semibold mt-6">Past Performance</h2>
+        <canvas id="performanceChart" class="mt-4"></canvas>
+        
+        <h2 class="text-xl font-semibold mt-6">Predicted Stock Price</h2>
+        <canvas id="predictionChart" class="mt-4"></canvas>
+    </div>
+    
+    <script>
+        function predictStockPrice() {
+            const perfCtx = document.getElementById('performanceChart').getContext('2d');
+            new Chart(perfCtx, {
+                type: 'line',
+                data: {
+                    labels: ['JAN', 'FEB', 'MAR', 'APR'],
+                    datasets: [{
+                        label: 'Historical Price',
+                        data: [2800, 3000, 3200, 3500],
+                        borderColor: 'orange',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: { ticks: { color: 'white' } },
+                        y: { ticks: { color: 'white' } }
+                    }
+                }
+            });
+            
+            const predCtx = document.getElementById('predictionChart').getContext('2d');
+            new Chart(predCtx, {
+                type: 'line',
+                data: {
+                    labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY'],
+                    datasets: [
+                        {
+                            label: 'Historical Price',
+                            data: [3100, 3150, 3200, 3180, 3250],
+                            borderColor: 'orange',
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Predicted Price',
+                            data: [3250, 3300, 3350, 3400, 3450],
+                            borderColor: 'lime',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        x: { ticks: { color: 'white' } },
+                        y: { ticks: { color: 'white' } }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
